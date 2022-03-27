@@ -18,6 +18,10 @@ const Form = () => {
     console.log("sending");
   };
 
+  const clear = () => {
+    console.log('Clearing')
+  }
+
   return (
     <Paper className={classes.paper}>
       <form
@@ -81,6 +85,15 @@ const Form = () => {
           fullWidth
         >
           Submit
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          fullWidth
+          onClick={clear}
+        >
+          Clear
         </Button>
       </form>
     </Paper>
