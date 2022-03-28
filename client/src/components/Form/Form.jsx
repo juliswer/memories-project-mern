@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "./styles";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
+import { useSelector } from "react-redux";
 
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
-
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((p) => p._id === currentId) : null
+  );
   const classes = useStyles();
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
+
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -28,7 +36,7 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   const clear = () => {
-    console.log("Clearing");
+    setPostData({});
   };
 
   return (
