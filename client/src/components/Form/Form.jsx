@@ -33,10 +33,18 @@ const Form = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createPost(postData));
     }
+    clear();
   };
 
   const clear = () => {
-    setPostData({});
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
   };
 
   return (
@@ -47,7 +55,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">{currentId ? 'Update a Memory' : 'Create a Memory'}</Typography>
+        <Typography variant="h6">
+          {currentId ? "Update a Memory" : "Create a Memory"}
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
