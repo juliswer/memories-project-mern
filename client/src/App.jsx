@@ -35,6 +35,7 @@ const App = () => {
             container
             justifyContent="space-between"
             alignItems="stretch"
+            direction="column-reverse"
             spacing={3}
           >
             <Grid item xs={12} sm={7}>
