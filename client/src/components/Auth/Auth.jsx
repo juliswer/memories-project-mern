@@ -11,7 +11,7 @@ import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
-import Icon from "./icon"; 
+import Icon from "./icon";
 
 const GoogleIdClient = process.env.REACT_APP_GOOGLE_PUBLIC_CLIENT_ID;
 const GoogleSecretClientId = process.env.REACT_APP_GOOGLE_SECRET_CLIENT_ID;
@@ -36,11 +36,12 @@ const Auth = () => {
     handleShowPassword(false);
   };
 
-  const googleSuccess = (res) => {
+  const googleSuccess = async (res) => {
     console.log(res);
   };
 
-  const googleFailure = () => {
+  const googleFailure = (error) => {
+    console.log(error);
     console.log("Google Sign In was unsuccessful. Try Again Later");
   };
 
