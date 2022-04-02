@@ -11,7 +11,7 @@ import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
-import icon from './icon'
+import Icon from './icon'
 
 const Auth = () => {
   const classes = useStyles();
@@ -91,7 +91,7 @@ const Auth = () => {
                 variant="contained"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
-                startIcon={<icon />}
+                startIcon={<Icon />}
               >
                 Google Sign In
               </Button>
