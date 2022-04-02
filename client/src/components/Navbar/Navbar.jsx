@@ -4,14 +4,17 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import memories from "../../images/memories.png";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const logout = () => {
-    dispatch({type: "LOGOUT"})
+    dispatch({type: "LOGOUT"});
+    history.push('/')
   };
 
   useEffect(() => {
