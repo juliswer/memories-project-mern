@@ -2,12 +2,7 @@ import React from "react";
 import { TextField, Grid, InputAdorment, IconButton, InputAdornment } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 
-const Input = ({ half, type, name, autoFocus, label, handleChange }) => {
-
-    const handleShowPassword = () => {
-        console.log('dgag');
-    }
-
+const Input = ({ half, type, name, autoFocus, label, handleChange, handleShowPassword }) => {
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>
       <TextField

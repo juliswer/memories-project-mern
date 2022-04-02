@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
@@ -13,8 +13,12 @@ import Input from "./Input";
 
 const Auth = () => {
   const classes = useStyles();
+  const [showPassword, setShowPassword] = useState(false);
 
   const isSignUp = false;
+
+  const handleShowPassword = () =>
+    setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,23 +38,34 @@ const Auth = () => {
           <Grid container spacing={2}>
             {isSignUp && (
               <>
-                  <Input
-                    name="firstName"
-                    label="First Name"
-                    handleChange={handleChange}
-                    autoFocus
-                    half
-                  />
-                  <Input
-                    name="firstName"
-                    label="First Name"
-                    handleChange={handleChange}
-                    half
-                  />
+                <Input
+                  name="firstName"
+                  label="First Name"
+                  handleChange={handleChange}
+                  autoFocus
+                  half
+                />
+                <Input
+                  name="firstName"
+                  label="First Name"
+                  handleChange={handleChange}
+                  half
+                />
               </>
             )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="password" label="Password" handleChange={handleChange} type="password" />
+            <Input
+              name="email"
+              label="Email Address"
+              handleChange={handleChange}
+              type="email"
+            />
+            <Input
+              name="password"
+              label="Password"
+              handleChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
+            />
           </Grid>
         </form>
       </Paper>
