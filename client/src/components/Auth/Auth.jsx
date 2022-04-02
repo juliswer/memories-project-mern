@@ -11,7 +11,9 @@ import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
-import Icon from './icon'
+import Icon from "./icon";
+
+console.log(process.env)
 
 const Auth = () => {
   const classes = useStyles();
@@ -31,6 +33,14 @@ const Auth = () => {
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     handleShowPassword(false);
+  };
+
+  const googleSuccess = (res) => {
+    console.log(res);
+  };
+
+  const googleFailure = () => {
+    console.log("Google Sign In was unsuccessful. Try Again Later");
   };
 
   return (
@@ -81,8 +91,17 @@ const Auth = () => {
               />
             )}
           </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            {isSignUp ? "Sign Up" : "Sign In"}
+          </Button>
           <GoogleLogin
-            clientId="google id"
+            clientId="1075726749800-d2l7jbcteovoulivhu40k21jh6162ie9.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}
@@ -96,16 +115,10 @@ const Auth = () => {
                 Google Sign In
               </Button>
             )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy={"single_host_origin"}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
