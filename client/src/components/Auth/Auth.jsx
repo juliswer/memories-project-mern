@@ -7,9 +7,11 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
+import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
+import icon from './icon'
 
 const Auth = () => {
   const classes = useStyles();
@@ -28,6 +30,7 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+    handleShowPassword(false);
   };
 
   return (
@@ -78,6 +81,22 @@ const Auth = () => {
               />
             )}
           </Grid>
+          <GoogleLogin
+            clientId="google id"
+            render={(renderProps) => (
+              <Button
+                className={classes.googleButton}
+                color="primary"
+                fullWidth
+                variant="contained"
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                startIcon={<icon />}
+              >
+                Google Sign In
+              </Button>
+            )}
+          />
           <Button
             type="submit"
             fullWidth
