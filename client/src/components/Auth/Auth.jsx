@@ -14,8 +14,7 @@ import Input from "./Input";
 const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
-
-  const isSignUp = false;
+  const [isSignUp, setIsSignUp] = useState(true);
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -26,6 +25,10 @@ const Auth = () => {
   };
 
   const handleChange = (e) => {};
+
+  const switchMode = () => {
+    setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -66,9 +69,33 @@ const Auth = () => {
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
-            {isSignUp && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
+            {isSignUp && (
+              <Input
+                name="confirmPassword"
+                label="Repeat Password"
+                handleChange={handleChange}
+                type="password"
+              />
+            )}
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>{isSignUp ? 'Sign Up' : 'Sign In'}</Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            {isSignUp ? "Sign Up" : "Sign In"}
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Button onClick={switchMode}>
+                {isSignUp
+                  ? "Already have an account? Sign In"
+                  : "Don't have an account? Sign Up"}
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </Paper>
     </Container>
