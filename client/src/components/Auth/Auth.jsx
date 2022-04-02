@@ -11,9 +11,10 @@ import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
-import Icon from "./icon";
+import Icon from "./icon"; 
 
-console.log(process.env)
+const GoogleIdClient = process.env.REACT_APP_GOOGLE_PUBLIC_CLIENT_ID;
+const GoogleSecretClientId = process.env.REACT_APP_GOOGLE_SECRET_CLIENT_ID;
 
 const Auth = () => {
   const classes = useStyles();
@@ -101,7 +102,7 @@ const Auth = () => {
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
           <GoogleLogin
-            clientId="1075726749800-d2l7jbcteovoulivhu40k21jh6162ie9.apps.googleusercontent.com"
+            clientId={GoogleIdClient}
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}
