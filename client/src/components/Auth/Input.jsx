@@ -1,8 +1,13 @@
 import React from "react";
-import { TextField, Grid, InputAdorment, IconButton } from "@material-ui/core";
+import { TextField, Grid, InputAdorment, IconButton, InputAdornment } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const Input = ({ half, type, name, autoFocus, label, handleChange }) => {
+
+    const handleShowPassword = () => {
+        console.log('dgag');
+    }
+
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>
       <TextField
@@ -17,11 +22,11 @@ const Input = ({ half, type, name, autoFocus, label, handleChange }) => {
         InputProps={
           name === "password" && {
             endAdornment: (
-              <InputAdorment position="end">
+              <InputAdornment position="end">
                 <IconButton onClick={handleShowPassword}>
                   {type === "password" ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-              </InputAdorment>
+              </InputAdornment>
             ),
           }
         }
