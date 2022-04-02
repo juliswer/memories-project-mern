@@ -1,7 +1,8 @@
 import React from "react";
 import { TextField, Grid, InputAdorment, IconButton } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
-const Input = ({ half, type, name, autoFocus, label }) => {
+const Input = ({ half, type, name, autoFocus, label, handleChange }) => {
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>
       <TextField
