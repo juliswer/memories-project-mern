@@ -14,6 +14,7 @@ import useStyles from "./styles";
 import Input from "./Input";
 import { useHistory } from "react-router-dom";
 import Icon from "./icon";
+import {signin, signup} from '../../actions/auth';
 
 const GoogleIdClient = process.env.REACT_APP_GOOGLE_PUBLIC_CLIENT_ID;
 const GoogleSecretClientId = process.env.REACT_APP_GOOGLE_SECRET_CLIENT_ID;
@@ -39,7 +40,12 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (isSignUp) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   };
 
   const handleChange = (e) => {
