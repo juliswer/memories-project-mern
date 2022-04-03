@@ -20,13 +20,16 @@ export const signin = async (req, res) => {
       existingUser.password
     );
 
-    if (!isPasswordCorrect) return res.status(400).json({ message: "Incorrect password" });
+    if (!isPasswordCorrect)
+      return res.status(400).json({ message: "Incorrect password" });
 
-    const token = jwt.sign({
+    const token = jwt.sign(
+      {
         email: existingUser.email,
-        id: existingUser._id
-    }, JWTSecret)
-
+        id: existingUser._id,
+      },
+      JWTSecret
+    );
   } catch (error) {}
 };
 
