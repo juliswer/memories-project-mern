@@ -14,10 +14,11 @@ import useStyles from "./styles";
 import Input from "./Input";
 import { useHistory } from "react-router-dom";
 import Icon from "./icon";
-import {signin, signup} from '../../actions/auth';
+import { signin, signup } from "../../actions/auth";
 
 const GoogleIdClient = process.env.REACT_APP_GOOGLE_PUBLIC_CLIENT_ID;
-const GoogleSecretClientId = process.env.REACT_APP_GOOGLE_SECRET_CLIENT_ID;
+
+console.log(GoogleIdClient);
 
 const initialState = {
   firstName: "",
