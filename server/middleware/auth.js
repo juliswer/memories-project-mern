@@ -5,6 +5,7 @@ const JWTSecret = process.env.SECRET_JWT_KEY;
 
 const auth = async (req, res, next) => {
   try {
+    if(!req.headers.authorization) console.log('No token here!')
     const token = req.headers.authorization.split(" ")[1];
     const isCustomAuth = token.length < 500;
 

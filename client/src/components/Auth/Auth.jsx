@@ -15,10 +15,9 @@ import Input from "./Input";
 import { useHistory } from "react-router-dom";
 import Icon from "./icon";
 import { signin, signup } from "../../actions/auth";
+import { AUTH } from "../../constants/actionTypes";
 
 const GoogleIdClient = process.env.REACT_APP_GOOGLE_PUBLIC_CLIENT_ID;
-
-console.log(GoogleIdClient);
 
 const initialState = {
   firstName: "",
@@ -61,9 +60,9 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-
+    console.log(result, token);
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: AUTH, data: { result, token } });
       history.push("/");
     } catch (error) {
       console.log(error);
